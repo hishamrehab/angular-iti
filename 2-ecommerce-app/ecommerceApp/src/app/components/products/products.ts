@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Products {
  products:Iproduct[]
+ totalOrderPrice:number = 0;
+
  constructor() {
   this.products = [
  {
@@ -67,4 +69,9 @@ export class Products {
   }
   ]
  }
+
+  buy(count: string , price: number) {
+  this.totalOrderPrice += +count * price;
+  console.log(this.totalOrderPrice);
+  }
 }
