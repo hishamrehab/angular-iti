@@ -38,15 +38,21 @@
           <p class="card-text">
           Price: {{prd.price}}        
           </p>
-        <p class="card-text" *ngIf="prd.quantity !==1";else lastItem>
+        <!-- <p class="card-text" *ngIf="prd.quantity !==1";else lastItem>
           Quantity: {{prd.quantity}}        
           </p>
           <ng-template #lastItem>
             <p>
             Quantity: Last Item    
             </p>
-          </ng-template>
-          
+          </ng-template> -->
+  
+           <div [ngSwitch]="prd.quantity">
+            <p *ngSwitchCase="1">Quantity : Last Item </p>
+            <p *ngSwitchCase="2">Quantity : Last Two Items </p>
+            <p *ngSwitchDefault="">Quantity : {{prd.quantity}}</p>
+           </div>
+        
           <!-- <p class="card-text">{{c}}</p> -->
           <!-- template variable , refrence -->
           <input type="number" #countInput  />
