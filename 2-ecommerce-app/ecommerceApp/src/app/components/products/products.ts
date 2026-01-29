@@ -83,11 +83,8 @@ export class Products {
   console.log(this.totalOrderPrice);
   }
 
-
  change() {
 this.selectedCatId = +this.selectedCatId;
  }
-
-
 
 }

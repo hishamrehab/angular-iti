@@ -21,7 +21,7 @@
 <div class="row row-cols-1 row-cols-md-4 g-4">
   <div
    class="col" 
-  *ngFor="let prd of products"
+  *ngFor="let prd of products;let i=index; let c=count"
   [class.d-none]="prd.catId !== selectedCatId"
    >
     <div class="card">
@@ -30,7 +30,7 @@
       [style.background-color]="(prd.quantity === 0)? 'yellow' : 'white'" 
       >
         <h5 class="card-title">
-            {{prd.name}}
+          {{i+1}}  {{prd.name}}
         </h5>
         <p class="card-text">
         Price: {{prd.price}}        
@@ -38,6 +38,7 @@
             <p class="card-text">
         Quantity: {{prd.quantity}}        
         </p>
+        <!-- <p class="card-text">{{c}}</p> -->
         <!-- template variable , refrence -->
         <input type="number" #countInput  />
         <button class="btn btn-success" (click)="buy(countInput.value , prd.price)">buy</button>
