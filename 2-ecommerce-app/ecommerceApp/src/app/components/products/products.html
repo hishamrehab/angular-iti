@@ -19,10 +19,16 @@
 </button> -->
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
-  <div class="col" *ngFor="let prd of products" [class.d-none]="prd.catId !== selectedCatId">
+  <div
+   class="col" 
+  *ngFor="let prd of products"
+  [class.d-none]="prd.catId !== selectedCatId"
+   >
     <div class="card">
       <img [src]="prd.imgUrl" class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body"
+      [style.background-color]="(prd.quantity === 0)? 'yellow' : 'white'" 
+      >
         <h5 class="card-title">
             {{prd.name}}
         </h5>
