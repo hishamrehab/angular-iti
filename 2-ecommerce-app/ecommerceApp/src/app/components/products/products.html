@@ -38,9 +38,15 @@
           <p class="card-text">
           Price: {{prd.price}}        
           </p>
-              <p class="card-text">
+        <p class="card-text" *ngIf="prd.quantity !==1";else lastItem>
           Quantity: {{prd.quantity}}        
           </p>
+          <ng-template #lastItem>
+            <p>
+            Quantity: Last Item    
+            </p>
+          </ng-template>
+          
           <!-- <p class="card-text">{{c}}</p> -->
           <!-- template variable , refrence -->
           <input type="number" #countInput  />
