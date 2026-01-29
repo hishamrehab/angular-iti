@@ -19,30 +19,36 @@
 </button> -->
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
-  <div
-   class="col" 
-  *ngFor="let prd of products;let i=index; let c=count"
-  [class.d-none]="prd.catId !== selectedCatId"
-   >
-    <div class="card">
-      <img [src]="prd.imgUrl" class="card-img-top" alt="...">
-      <div class="card-body"
-      [style.background-color]="(prd.quantity === 0)? 'yellow' : 'white'" 
-      >
-        <h5 class="card-title">
-          {{i+1}}  {{prd.name}}
-        </h5>
-        <p class="card-text">
-        Price: {{prd.price}}        
-        </p>
-            <p class="card-text">
-        Quantity: {{prd.quantity}}        
-        </p>
-        <!-- <p class="card-text">{{c}}</p> -->
-        <!-- template variable , refrence -->
-        <input type="number" #countInput  />
-        <button class="btn btn-success" (click)="buy(countInput.value , prd.price)">buy</button>
+ <ng-container
+     *ngFor="let prd of products;let i=index; let c=count;trackBy:trackItem"
+ >
+    <div
+    class="col" 
+    [class.d-none]="prd.catId !== selectedCatId"
+     *ngIf="prd.quantity !=0"
+    >
+      <div class="card">
+        <img [src]="prd.imgUrl" class="card-img-top" alt="...">
+        <div class="card-body"
+        [style.background-color]="(prd.quantity === 0)? 'yellow' : 'white'" 
+        >
+          <h5 class="card-title">
+            {{i+1}}  {{prd.name}}
+          </h5>
+          <p class="card-text">
+          Price: {{prd.price}}        
+          </p>
+              <p class="card-text">
+          Quantity: {{prd.quantity}}        
+          </p>
+          <!-- <p class="card-text">{{c}}</p> -->
+          <!-- template variable , refrence -->
+          <input type="number" #countInput  />
+          <button class="btn btn-success" (click)="buy(countInput.value , prd.price)">buy</button>
+        </div>
       </div>
     </div>
-  </div>
+ </ng-container>
+ 
+
 </div>

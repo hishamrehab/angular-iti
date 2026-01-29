@@ -87,4 +87,8 @@ export class Products {
 this.selectedCatId = +this.selectedCatId;
  }
 
+trackItem(index: number, item: Iproduct) {
+ return item.id;
+}
+
 }
