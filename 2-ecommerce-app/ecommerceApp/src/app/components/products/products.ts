@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
 import { Iproduct } from '../../models/iproduct';
 import { CommonModule } from '@angular/common';
+import { Icategory } from '../../models/icategory';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })
+
 export class Products {
  products:Iproduct[]
  totalOrderPrice:number = 0;
+ selectedCatId: number = 0;
+ categories: Icategory[];
 
  constructor() {
   this.products = [
@@ -39,8 +44,6 @@ export class Products {
   , imgUrl: "https://picsum.photos/id/1/200/300",
     catId: 2
   },
-
-  
   {
   id: 400 
   , name : "oppo" 
@@ -67,6 +70,11 @@ export class Products {
   , imgUrl: "https://picsum.photos/id/1/200/300",
     catId: 3
   }
+  ]
+  this.categories =[
+    {id : 1 , name : "laptops"},
+    {id : 2 , name : "mobiles"},
+    {id : 3 , name : "tablets"}
   ]
  }
 
